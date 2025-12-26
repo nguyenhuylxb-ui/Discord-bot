@@ -1,11 +1,11 @@
-const { Client, GatewayIntentBits } = require("discord.js");
+const express = require("express");
+const app = express();
 
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds]
+app.get("/", (req, res) => {
+  res.send("Chạy rồi nha 👍");
 });
 
-client.once("ready", () => {
-  console.log(`Bot online: ${client.user.tag}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
 });
-
-client.login(process.env.TOKEN);
